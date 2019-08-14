@@ -29,7 +29,11 @@ spIncludeMaven := true
 libraryDependencies ++= Seq(
   "com.google.cloud.bigdataoss" % "bigquery-connector" % "hadoop2-0.13.13"
     exclude ("com.google.guava", "guava-jdk5"),
-  "org.slf4j" % "slf4j-simple" % "1.7.21",
+  "org.slf4j" % "slf4j-simple" % "1.7.21" excludeAll(
+    ExclusionRule(organization = "com.sun.jdmk"),
+    ExclusionRule(organization = "com.sun.jmx"),
+    ExclusionRule(organization = "javax.jms")
+  ),
   "joda-time" % "joda-time" % "2.9.3",
   "org.scalatest" %% "scalatest" % "3.0.7" % "test"
 )
