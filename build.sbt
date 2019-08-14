@@ -31,7 +31,7 @@ libraryDependencies ++= Seq(
     exclude ("com.google.guava", "guava-jdk5"),
   "org.slf4j" % "slf4j-simple" % "1.7.21",
   "joda-time" % "joda-time" % "2.9.3",
-  "org.scalatest" %% "scalatest" % "2.2.1" % "test"
+  "org.scalatest" %% "scalatest" % "3.0.7" % "test"
 )
 
 assemblyMergeStrategy in assembly := {
