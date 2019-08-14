@@ -28,17 +28,22 @@ spIncludeMaven := true
 
 libraryDependencies ++= Seq(
   "com.google.cloud.bigdataoss" % "bigquery-connector" % "hadoop2-0.13.13"
-    exclude ("com.google.guava", "guava-jdk5"),
+    excludeAll (
+      ExclusionRule("com.google.guava", "guava-jdk5"),
+      ExclusionRule("com.sun.jdmk", "jmxtools"),
+      ExclusionRule("com.sun.jmx", "jmxri"),
+      ExclusionRule("javax.jms", "jms")
+    ),
   "org.slf4j" % "slf4j-simple" % "1.7.21",
   "joda-time" % "joda-time" % "2.9.3",
   "org.scalatest" %% "scalatest" % "3.0.7" % "test"
 )
 
-excludeDependencies ++= Seq(
-  SbtExclusionRule("com.sun.jdmk"),
-  SbtExclusionRule("com.sun.jmx"),
-  SbtExclusionRule("javax.jms")
-)
+/*excludeDependencies ++= Seq(
+  SbtExclusionRule("com.sun.jdmk", "jmxtools"),
+  SbtExclusionRule("com.sun.jmx", "jmxri"),
+  SbtExclusionRule("javax.jms", "jms")
+)*/
 
 assemblyMergeStrategy in assembly := {
   case PathList("com", "databricks", "spark", "avro", xs @ _*) => MergeStrategy.first
